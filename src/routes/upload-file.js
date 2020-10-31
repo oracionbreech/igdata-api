@@ -1,10 +1,7 @@
 import multer from "multer";
 import Uploads from "../models/uploads";
 import fs from "fs";
-import util from "util";
 import path from "path";
-
-const readFile = (fileName) => util.promisify(fs.readFile)(fileName, "utf8");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -35,13 +32,12 @@ export default function UploadFile(req, res, next) {
       user: commentor,
     });
 
-    console.log(createUploadField);
-    const commentorUpload = await JSON.parse();
-
-    console.log(
-      await readFile(path.join(__dirname, "../../public/" + filename))
+    const commentorUpload = await JSON.parse(
+      fs.readFileSync(path.join(__dirname + "/../../public/" + filename))
     );
-
-    res.status(200).json(createUploadField);
+    res.status(200).json({
+      creator: createUploadField,
+      uploaded: commentorUpload,
+    });
   });
 }

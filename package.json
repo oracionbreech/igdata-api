@@ -17,7 +17,7 @@
     "@babel/node": "^7.12.1"
   },
   "scripts": {
-    "develop": "nodemon --exec babel-node src/index.js"
+    "develop": "nodemon --exec babel-node --ignore public/ src/index.js"
   },
   "keywords": [],
   "author": "",
