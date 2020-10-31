@@ -4,7 +4,7 @@ const Uploads = new Schema({
   createdAt: { type: String, default: Date.now() },
   originfilename: String,
   filename: String,
-  user: String,
+  commentor: String,
   destination: String,
 });
 

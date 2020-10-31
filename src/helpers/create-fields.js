@@ -1,36 +1,18 @@
 const _ = require("lodash");
-import User from "../models/user";
+import Comments from "../models/comments";
 
-import fs from "fs";
+export default async function createComments(comments, commentor) {
+  console.log(commentor);
+  const createComments = comments.map((comment) => {
+    return {
+      commentor: commentor,
+      date: comment[0],
+      comment: comment[1],
+      instagram: comment[2],
+    };
+  });
 
-const fg = fs.readFileSync("1604144162416-comments.json");
-console.log(gf);
-// export default async function createFields(req, res, next) {
-//   const users = comments.map((comment) => {
-//     return comment[2];
-//   });
+  const comment = await Comments.insertMany(createComments).catch((err) => err);
 
-//   const filteredUsers = users.filter(function (item, pos) {
-//     return users.indexOf(item) == pos;
-//   });
-
-//   const createuser = filteredUsers.map((user) => {
-//     return {
-//       user,
-//     };
-//   });
-
-//   const user = await User.insertMany(createuser);
-
-//   const createComments = comments.map((comment) => {
-//     return {
-//       date: comment[0],
-//       comment: comment[1],
-//       user: comment[2],
-//     };
-//   });
-
-//   const comment = await Comments.insertMany(createComments);
-
-//   return comment;
-// }
+  return comment;
+}
