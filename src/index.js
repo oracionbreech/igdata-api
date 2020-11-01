@@ -9,6 +9,7 @@ import UploadFile from "./routes/upload-file";
 import createUser from "./routes/create-user";
 import getUsers from "./routes/get-users";
 import getFiles from "./routes/get-files";
+import getFileComments from "./routes/get-file-comments";
 
 const PORT = 5000;
 
@@ -30,6 +31,7 @@ router.get("/clear-fields", clearFields);
 router.get("/get-comments", getComments);
 router.get("/get-users", getUsers);
 router.get("/get-files", getFiles);
+router.get("/get-file-comments", getFileComments);
 
 router.post("/upload-file", UploadFile);
 router.post("/create-user", createUser);
