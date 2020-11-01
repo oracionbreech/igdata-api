@@ -6,14 +6,19 @@ import mongoose from "mongoose";
 import clearFields from "./routes/clear-fields";
 import getComments from "./routes/get-comments";
 import UploadFile from "./routes/upload-file";
+import createUser from "./routes/create-user";
+import getUsers from "./routes/get-users";
+import getFiles from "./routes/get-files";
 
 const PORT = 5000;
-const router = express.Router();
+
 const app = express();
-const mongoDB = "mongodb://127.0.0.1/igdata";
+const router = express.Router();
 app.use(express.static(__dirname + "/public"));
 app.use(cors());
 app.use(router);
+router.use(express.json());
+const mongoDB = "mongodb://127.0.0.1/igdata";
 
 router.use(function timeLog(req, res, next) {
   console.log(`${req.method} Time: `, Date.now());
@@ -23,7 +28,11 @@ router.use(function timeLog(req, res, next) {
 // ROUTES
 router.get("/clear-fields", clearFields);
 router.get("/get-comments", getComments);
+router.get("/get-users", getUsers);
+router.get("/get-files", getFiles);
+
 router.post("/upload-file", UploadFile);
+router.post("/create-user", createUser);
 
 const server = http.createServer(app);
 server.listen(PORT, async () => {
