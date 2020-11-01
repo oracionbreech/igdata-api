@@ -3,6 +3,7 @@ import Uploads from "../models/uploads";
 import fs from "fs";
 import path from "path";
 import createComments from "../helpers/create-fields";
+import _ from "lodash";
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -32,6 +33,7 @@ export default function UploadFile(req, res, next) {
       destination,
       commentor,
     });
+
     const { media_comments } = await JSON.parse(
       fs.readFileSync(path.join(__dirname + "/../../public/" + filename))
     );

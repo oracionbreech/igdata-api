@@ -39,7 +39,11 @@ router.post("/create-user", createUser);
 const server = http.createServer(app);
 server.listen(PORT, async () => {
   await mongoose
-    .connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(mongoDB, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      autoIndex: true,
+    })
     .then(console.log("Connected to DB"))
     .catch((err) => console.error(err));
   const db = mongoose.connection;

@@ -133,8 +133,6 @@ const findDup = _.filter(
   }
 );
 
-console.log(findDup);
-
 export default function parseComments(req, res, next) {
   res.status(200).json(findMatchingComments);
 }
