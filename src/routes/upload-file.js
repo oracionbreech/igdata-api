@@ -40,9 +40,17 @@ export default function UploadFile(req, res, next) {
 
     const createfields = await createComments(media_comments, commentor);
 
-    res.status(200).json({
-      creator: createUploadField,
-      uploaded: createfields,
-    });
+    if (createfields === null) {
+      res.status(400).json({
+        error: true,
+        message:
+          "Uniqueness of Comments is not present. You Must have uploaded it already",
+      });
+    } else {
+      res.status(200).json({
+        creator: createUploadField,
+        uploaded: createfields,
+      });
+    }
   });
 }

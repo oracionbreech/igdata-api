@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const Comments = new Schema({
   commentor: String,
-  date: { type: Date, unique: true },
+  date: { type: Date },
   comment: String,
   instagram: String,
 });
