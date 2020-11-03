@@ -19,7 +19,8 @@ app.use(express.static(__dirname + "/public"));
 app.use(cors());
 app.use(router);
 router.use(express.json());
-const mongoDB = "mongodb://127.0.0.1/igdata";
+const mongoDB =
+  "mongodb+srv://koko:Ygb2LYKLFOECAmgJ@cluster0.f4kw9.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority";
 
 router.use(function timeLog(req, res, next) {
   console.log(`${req.method} Time: `, Date.now());
