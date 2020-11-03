@@ -11,7 +11,7 @@ import getUsers from "./routes/get-users";
 import getFiles from "./routes/get-files";
 import getFileComments from "./routes/get-file-comments";
 
-const PORT = 5000;
+const PORT = 5000 || process.env.PORT;
 
 const app = express();
 const router = express.Router();
