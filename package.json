@@ -17,6 +17,10 @@
     "@babel/node": "^7.12.1"
   },
   "scripts": {
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "start": "npm run build && node ./build/index.js",
+    "build": "npm run clean && npm run build-babel",
     "develop": "nodemon --exec babel-node --ignore public/ src/index.js"
   },
   "keywords": [],

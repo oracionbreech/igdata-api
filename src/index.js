@@ -11,7 +11,7 @@ import getUsers from "./routes/get-users";
 import getFiles from "./routes/get-files";
 import getFileComments from "./routes/get-file-comments";
 
-const PORT = 5000 || process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 const router = express.Router();
@@ -20,7 +20,7 @@ app.use(cors());
 app.use(router);
 router.use(express.json());
 const mongoDB =
-  "mongodb+srv://koko:Ygb2LYKLFOECAmgJ@cluster0.f4kw9.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority";
+  "mongodb+srv://koko:Ygb2LYKLFOECAmgJ@cluster0.f4kw9.gcp.mongodb.net/igdata?retryWrites=true&w=majority";
 
 router.use(function timeLog(req, res, next) {
   console.log(`${req.method} Time: `, Date.now());
