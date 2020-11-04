@@ -35,7 +35,7 @@ export default function UploadFile(req, res, next) {
     });
 
     const { media_comments } = await JSON.parse(
-      fs.readFileSync(path.join(__dirname + "/../../public/" + filename))
+      fs.readFileSync(path.join(__dirname + "/../../tmp/" + filename))
     );
 
     const createfields = await createComments(media_comments, commentor);

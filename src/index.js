@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 const router = express.Router();
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/tmp"));
 app.use(cors());
 app.use(router);
 router.use(express.json());
