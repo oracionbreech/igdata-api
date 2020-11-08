@@ -10,6 +10,9 @@ import createUser from "./routes/create-user";
 import getUsers from "./routes/get-users";
 import getFiles from "./routes/get-files";
 import getFileComments from "./routes/get-file-comments";
+import deleteUser from "./routes/delete-user";
+import createAuditors from "./routes/create-auditor";
+import loginAuditor from "./routes/login-auditor";
 
 const PORT = process.env.PORT || 5000;
 
@@ -36,6 +39,10 @@ router.get("/get-file-comments", getFileComments);
 
 router.post("/upload-file", UploadFile);
 router.post("/create-user", createUser);
+router.post("/create-auditor", createAuditors);
+router.post("/login-auditor", loginAuditor);
+
+router.delete("/delete-user", deleteUser);
 
 const server = http.createServer(app);
 server.listen(PORT, async () => {
