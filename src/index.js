@@ -13,6 +13,7 @@ import getFileComments from "./routes/get-file-comments";
 import deleteUser from "./routes/delete-user";
 import createAuditors from "./routes/create-auditor";
 import loginAuditor from "./routes/login-auditor";
+import "dotenv/config";
 
 const PORT = process.env.PORT || 5000;
 
@@ -22,8 +23,7 @@ app.use(express.static(__dirname + "/tmp"));
 app.use(cors());
 app.use(router);
 router.use(express.json());
-const mongoDB =
-  "mongodb+srv://koko:Ygb2LYKLFOECAmgJ@cluster0.f4kw9.gcp.mongodb.net/igdata?retryWrites=true&w=majority";
+const mongoDB = process.env.MONGODB_URI;
 
 router.use(function timeLog(req, res, next) {
   console.log(`${req.method} Time: `, Date.now());
