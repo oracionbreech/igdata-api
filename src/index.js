@@ -14,6 +14,7 @@ import deleteUser from "./routes/delete-user";
 import createAuditors from "./routes/create-auditor";
 import loginAuditor from "./routes/login-auditor";
 import "dotenv/config";
+import getUser from "./routes/get-user";
 
 const PORT = process.env.PORT || 5000;
 
@@ -36,13 +37,14 @@ router.get("/get-comments", getComments);
 router.get("/get-users", getUsers);
 router.get("/get-files", getFiles);
 router.get("/get-file-comments", getFileComments);
+router.get("/get-user/:userId", getUser);
 
 router.post("/upload-file", UploadFile);
 router.post("/create-user", createUser);
 router.post("/create-auditor", createAuditors);
 router.post("/login-auditor", loginAuditor);
 
-router.delete("/delete-user", deleteUser);
+router.delete("/delete-user/:userId", deleteUser);
 
 const server = http.createServer(app);
 server.listen(PORT, async () => {
