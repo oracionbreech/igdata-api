@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const User = new Schema({
   createdAt: { type: Date, default: Date.now() },
-  user: { type: String, required: true },
+  isEmployed: { type: Boolean, default: true },
   name: { type: String, required: true },
 });
 
