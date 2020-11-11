@@ -19,26 +19,17 @@ import getUser from "./routes/get-user";
 const PORT = process.env.PORT || 5000;
 
 var corsOptions = {
-  origin: "https://theigdata.netlify.app",
+  origin: "*",
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
 const app = express();
+app.use(cors(corsOptions));
 const router = express.Router();
 app.use(express.static(__dirname + "/tmp"));
 app.use(router);
-app.use(cors(corsOptions));
 router.use(express.json());
 const mongoDB = process.env.MONGODB_URI;
-
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
 
 router.use(function timeLog(req, res, next) {
   console.log(`${req.method} Time: `, Date.now());
