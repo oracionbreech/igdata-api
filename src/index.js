@@ -18,13 +18,8 @@ import getUser from "./routes/get-user";
 
 const PORT = process.env.PORT || 5000;
 
-var corsOptions = {
-  origin: "*",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-
 const app = express();
-app.use(cors(corsOptions));
+app.use(cors({ origin: true }));
 const router = express.Router();
 app.use(express.static(__dirname + "/tmp"));
 app.use(router);
