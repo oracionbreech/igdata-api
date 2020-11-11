@@ -18,10 +18,15 @@ import getUser from "./routes/get-user";
 
 const PORT = process.env.PORT || 5000;
 
+var corsOptions = {
+  origin: "https://theigdata.netlify.app",
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
 const app = express();
 const router = express.Router();
 app.use(express.static(__dirname + "/tmp"));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(router);
 router.use(express.json());
 const mongoDB = process.env.MONGODB_URI;
