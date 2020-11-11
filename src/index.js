@@ -20,6 +20,7 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 const router = express.Router();
+app.use(cors());
 app.use(express.static(__dirname + "/tmp"));
 app.use(router);
 router.use(express.json());
@@ -29,8 +30,6 @@ router.use(function timeLog(req, res, next) {
   console.log(`${req.method} Time: `, Date.now());
   next();
 });
-
-app.use(cors({ origin: true }));
 
 // ROUTES
 router.get("/clear-fields", clearFields);
