@@ -19,7 +19,7 @@ import getUser from "./routes/get-user";
 const PORT = process.env.PORT || 8000;
 
 const app = express();
-app.use(morgan(":id :method :url :response-time"));
+app.use(morgan("combined"));
 const router = express.Router();
 app.use(
   cors({
