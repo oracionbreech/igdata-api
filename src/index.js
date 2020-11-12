@@ -16,13 +16,13 @@ import loginAuditor from "./routes/login-auditor";
 import "dotenv/config";
 import getUser from "./routes/get-user";
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 const app = express();
 const router = express.Router();
 app.use(
   cors({
-    origin: "http://13.229.71.34:5000",
+    origin: ["http://13.229.71.34:5000", "http://localhost:3000"],
   })
 );
 app.use(express.static(__dirname + "/tmp"));
