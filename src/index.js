@@ -22,7 +22,7 @@ const app = express();
 const router = express.Router();
 app.use(
   cors({
-    origin: ["http://13.229.71.34:5000", "http://localhost:3000"],
+    origin: ["http://18.136.123.125:5000", "http://localhost:3000"],
   })
 );
 app.use(express.static(__dirname + "/tmp"));
